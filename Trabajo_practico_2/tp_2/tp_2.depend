@@ -24,3 +24,28 @@
 	"ArrayEmployees.h"
 	"utn.h"
 
+1538440993 source:c:\tp_laboratorio_1_\trabajo_practico_2\tp_2\arrayemployees.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayEmployees.h"
+	"utn.h"
+
+1538436631 c:\tp_laboratorio_1_\trabajo_practico_2\tp_2\arrayemployees.h
+
+1538436631 c:\tp_laboratorio_1_\trabajo_practico_2\tp_2\utn.h
+
+1538441482 source:c:\tp_laboratorio_1_\trabajo_practico_2\tp_2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayEmployees.h"
+	"utn.h"
+
+1538436631 source:c:\tp_laboratorio_1_\trabajo_practico_2\tp_2\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"utn.h"
+

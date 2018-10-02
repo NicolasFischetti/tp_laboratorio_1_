@@ -31,6 +31,13 @@ int initEmployees(Employee* list, int len)
     return retorno;
 }
 
+/** \brief find a empty places
+ *
+* \param list Employee* Pointer to array of employees
+ * \param len int Array length
+ * \return the empty places
+ *
+ */
 static int findFreePlaces(Employee* list,int len)
 {
     int retorno = -1;
@@ -49,6 +56,9 @@ static int findFreePlaces(Employee* list,int len)
     }
     return retorno;
 }
+/** \brief Count the next id ++;
+ * \return return the lastId;
+ */
 
 static int nextId()
 {
@@ -112,6 +122,12 @@ int addEmployee(Employee* list, int len)
     return retorno;
 }
 
+/** \brief Modify a existing list of employees the values
+ * \param list employee*
+ * \param len int
+ * \return int Return (-1) if Error [Invalid length or NULL pointer or without
+free */
+
 int modifyEmployees(Employee* list,int len, int id)
 {
     int retorno = -1;
@@ -122,8 +138,10 @@ int modifyEmployees(Employee* list,int len, int id)
     int Auxsector;
 
     index = findEmployeeById(list,len,id);
+
     if(index >= 0)
     {
+
         retorno = -2;
 
         if(!getValidString("Nombre del empleado nuevo?\n","Error, ingrese su nuevo nombre nuevamente\n","Overflow", Auxname,51,2))
@@ -144,9 +162,12 @@ int modifyEmployees(Employee* list,int len, int id)
                         }
                     }
             }
+        }
+
+         return retorno;
     }
-    return retorno;
-}
+
+
 
 /** \brief Remove a Employee by Id (put isEmpty Flag in 1)
  *
@@ -199,12 +220,24 @@ int findEmployeeById(Employee* list, int len,int id)
     return retorno;
 }
 
+/** \brief Sort the elements in the array of employees, the argument order
+indicate UP or DOWN order
+ *
+ * \param list Employee*
+ * \param len int
+ * \param order int [0] indicate UP - [0] indicate DOWN
+ * \return int Return (-1) if Error [Invalid length or NULL pointer] - (0) if Ok
+ *
+ */
+
 int sortEmployees(Employee* list, int len, int orden)
 {
     int retorno = -1;
     int flagSwap;
     int i;
     Employee auxiliarLastName;
+
+    int auxSector;
 
     if(len > 0 && list != NULL)
     {
@@ -214,24 +247,27 @@ int sortEmployees(Employee* list, int len, int orden)
             flagSwap = 0;
             for(i=0;i<len-1;i++)
             {
-                    if(list[i].isEmpty == 0 && list[i+1].isEmpty == 0 )
+                    if(list[i].isEmpty == 0 && list[i+1].isEmpty == 0)
                     {
-
                             if((strncmp(list[i].lastName,list[i+1].lastName, 51) > 0 && !orden) || (strncmp(list[i].lastName,list[i+1].lastName,51) < 0 && orden))
                             {
-                                if(list[i].sector == list[i+1].sector)
-                                {
+
 
                                     auxiliarLastName = list[i];
                                     list[i] = list[i+1];
                                     list[i+1] = auxiliarLastName;
 
-                                }
+                                    auxSector = list[i].sector;
+                                    list[i].sector = list[i+1].sector;
+                                    list[i+1].sector = auxSector;
+                                    flagSwap = 1;
+
 
                             }
 
-                    }
+                        }
             }
+
         }while(flagSwap);
     }
 
@@ -243,6 +279,13 @@ int sortEmployees(Employee* list, int len, int orden)
 
     return retorno;
 }
+/** \brief Total salary, average and count of employees greater than the salary
+ *
+ * \param list Employee*
+ * \param len int
+ * \return total salary, average and count of employees greater than the salary
+ *
+ */
 
 int totalSalary(Employee *list, int len) {
 
@@ -279,6 +322,14 @@ int totalSalary(Employee *list, int len) {
     return retorno;
 }
 
+/** \brief print the content of employees array
+ *
+ * \param list Employee*
+ * \param length int
+ * \return int
+ *
+ */
+
 int printEmployees(Employee* list, int length)
 {
     int retorno = -1;
@@ -297,19 +348,4 @@ int printEmployees(Employee* list, int length)
     return retorno;
 }
 
-int initEmployeesFirstPosition(Employee* list, int len)
-{
-  int retorno = -1;
 
-    if(len > 0 && list != NULL)
-    {
-
-            if(list[0].isEmpty == 1)
-            {
-                printf("\nTiene que dar de alta un usuario para continuar\n");
-                retorno = 0;
-            }
-    }
-
-    return retorno;
-}

@@ -10,7 +10,6 @@ int main()
     Employee list[MAX_EMPLEADOS];
     int menu;
     int auxiliarId;
-
     initEmployees(list, MAX_EMPLEADOS);
 
     do
@@ -23,17 +22,26 @@ int main()
                 addEmployee(list,MAX_EMPLEADOS);
                 break;
             case 2:
-                initEmployeesFirstPosition(list, MAX_EMPLEADOS);
+                if(list[0].isEmpty == 1) {
+                    printf("\nNecesita cargar una persona para continuar\n");
+                    break;
+                }
                 getValidInt("\nID del empleado?","\nNumero invalido\n",&auxiliarId,0,4,2);
                 modifyEmployees(list,MAX_EMPLEADOS, auxiliarId);
                 break;
             case 3:
-                initEmployeesFirstPosition(list, MAX_EMPLEADOS);
+                if(list[0].isEmpty == 1) {
+                    printf("\nNecesita cargar una persona para continuar\n");
+                    break;
+                }
                 getValidInt("\nID del empleado?","\nNumero invalidado\n",&auxiliarId,0,4,2);
                 removeEmployee(list,MAX_EMPLEADOS, auxiliarId);
                 break;
             case 4:
-                initEmployeesFirstPosition(list, MAX_EMPLEADOS);
+                if(list[0].isEmpty == 1) {
+                    printf("\nNecesita cargar una persona para continuar\n");
+                    break;
+                }
                 sortEmployees(list,MAX_EMPLEADOS,0);
                 break;
             case 5:
